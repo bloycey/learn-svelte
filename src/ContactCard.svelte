@@ -1,8 +1,10 @@
 <script>
+	import CourseGoal from './CourseGoal.svelte';
 	export let userName;
 	export let jobTitle;
 	export let description;
 	export let imgSrc;
+	export let goal;
 </script>
 
 <style>
@@ -23,6 +25,10 @@
 	.thumb {
 		width: 33%;
 		height: 100%;
+	}
+
+	.thumb-placeholder {
+		background: #cccccc;
 	}
 
 	img {
@@ -60,7 +66,7 @@
 
 <div class="contact-card">
 	<header>
-		<div class="thumb">
+		<div class="thumb" class:thumb-placeholder={!imgSrc}>
 			<img src={imgSrc} alt={userName} />
 		</div>
 		<div class="user-data">
@@ -69,6 +75,9 @@
 		</div>
 	</header>
 	<div class="description">
-		<p>{description}</p>
+		<p>{@html description}</p>
+	</div>
+	<div>
+		<CourseGoal {goal}/>
 	</div>
 </div>
